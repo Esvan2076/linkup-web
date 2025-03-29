@@ -1,14 +1,16 @@
-import { useState } from 'react'
 import './App.css'
+import Header from "./components/templates/header";
+import Footer from './components/templates/footer';
 
 function App() {
-   const [count, setCount] = useState(0)
-
    return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-         <h1 className="text-4xl font-bold text-blue-500">¡Hola, Soy LinkUp editado por karen omg! 🚀</h1>
-         <button className="btn">Hola</button>
+      <div>
+         <Header />
+         <div className="min-h-screen flex items-center justify-center">
+         </div>
+         <Footer/>
       </div>
+
    )
 }
 
