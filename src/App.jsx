@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-blue-500">¡Hola, Soy LinkUp! 🚀</h1>
+      <h1 className="text-4xl font-bold text-blue-500">¡Hola, Soy LinkUp editado por karen omg! 🚀</h1>
     </div>
   )
 }
