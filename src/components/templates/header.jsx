@@ -29,7 +29,7 @@ const Header = () => {
             </button>
 
             <div className="dropdown dropdown-end">
-               <div tabindex="0" role="button" class="btn btn-primary">
+               <div tabIndex="0" role="button" className="btn btn-primary">
                   <button className="btn btn-primary">
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                         <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z"></path>
@@ -39,8 +39,8 @@ const Header = () => {
                   </button>
                </div>
                <ul
-                  tabindex="0"
-                  class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                  tabIndex="0"
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                   <li>
                      <a onClick={() => navigate("/login")}>Iniciar Sesion</a>
                   </li>
@@ -51,7 +51,6 @@ const Header = () => {
             </div>
          </div>
       </div>
-
    );
 };
 
