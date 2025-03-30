@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./components/pages/LoginPage";
+import MentorPage from "./components/pages/MentorPage";
 import App from "./App.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -10,6 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
          <Route path="/" element={<App />} />
          <Route path="/login" element={<LoginPage />} />
+         <Route path="/mentores" element={<MentorPage />} />
       </Routes>
    </BrowserRouter>
 );

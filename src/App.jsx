@@ -1,17 +1,16 @@
 import './App.css'
 import Header from "./components/templates/header";
 import Footer from './components/templates/footer';
+import HomePage from "./components/pages/HomePage";
 
 function App() {
    return (
-      <div>
-         <Header />
-         <div className="min-h-screen flex items-center justify-center">
-         </div>
-         <Footer/>
-      </div>
-
-   )
-}
+     <div>
+       <Header />
+       <HomePage />
+       <Footer />
+     </div>
+   );
+ }
 
 export default App
