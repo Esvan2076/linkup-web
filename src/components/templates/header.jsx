@@ -28,13 +28,27 @@ const Header = () => {
                Sueños
             </button>
 
-            <button className="btn btn-primary" onClick={() => navigate("/login")}>
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                  <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z"></path>
-                  <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z"></path>
-               </svg>
-               Iniciar sesion
-            </button>
+            <div className="dropdown dropdown-end">
+               <div tabindex="0" role="button" class="btn btn-primary">
+                  <button className="btn btn-primary">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z"></path>
+                        <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z"></path>
+                     </svg>
+                     Iniciar sesion
+                  </button>
+               </div>
+               <ul
+                  tabindex="0"
+                  class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                  <li>
+                     <a onClick={() => navigate("/login")}>Iniciar Sesion</a>
+                  </li>
+                  <li>
+                     <a onClick={() => navigate("/signup")}>Registrarse</a>
+                  </li>
+               </ul>
+            </div>
          </div>
       </div>
 
