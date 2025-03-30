@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRegisterUser } from "../../hooks/useUser";
 import InputField from "../molecules/InputField";
 import Button from "../atoms/Button";
 
@@ -11,25 +12,65 @@ const SignupForm = () => {
    const [categoria, setCategoria] = useState("");
    const [sitioWeb, setSitioWeb] = useState("");
    const [edad, setEdad] = useState("");
+   const [loading, setLoading] = useState(false);
+   const [error, setError] = useState(null);
+   const [successMessage, setSuccessMessage] = useState("");
 
-   const handleSubmit = (e) => {
+   const { register } = useRegisterUser();
+
+   const handleSubmit = async (e) => {
       e.preventDefault();
-      // Aquí iría la lógica para manejar el registro del usuario
+   
+
+      if (!nombreCompleto || !correo || !password || !sobreMi || !ubicacion || !categoria || !sitioWeb || !edad) {
+         setError("Todos los campos son obligatorios.");
+         return;
+      }
+
+      const principalId = 23;
+
       const newUser = {
          nombreCompleto,
          correo,
+         password,
          sobreMi,
          ubicacion,
          categoria,
          sitioWeb,
          edad,
-         password
+         principalId
       };
-      console.log(newUser);
+
+      try {
+         setLoading(true);
+         setError(null);
+
+         await register(newUser);
+
+         setSuccessMessage("¡Registro exitoso! Ahora puedes iniciar sesión.");
+      } catch (err) {
+         setError("Error al registrar al usuario. Intenta nuevamente.");
+         console.error(err);
+      } finally {
+         setLoading(false);
+      }
    };
+
 
    return (
       <form onSubmit={handleSubmit} className="space-y-5">
+         {successMessage && (
+            <div className="alert alert-success">
+               <span>{successMessage}</span>
+            </div>
+         )}
+
+         {error && (
+            <div className="alert alert-error">
+               <span>{error}</span>
+            </div>
+         )}
+
          <InputField
             label="Nombre completo"
             type="text"
@@ -102,7 +143,7 @@ const SignupForm = () => {
             onChange={(e) => setEdad(e.target.value)}
          />
 
-         <Button text="Registrarse" onClick={handleSubmit} />
+         <Button text={loading ? "Registrando..." : "Registrarse"} type="submit" disabled={loading} />
       </form>
    );
 };

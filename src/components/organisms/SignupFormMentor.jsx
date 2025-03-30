@@ -48,10 +48,7 @@ const SignupForm = () => {
          setLoading(true);
          setError(null);
 
-         // Llama a la función para registrar al mentor
          const result = await registerMentor(newMentor);
-
-         // Aquí puedes manejar la respuesta del servidor (puedes mostrar un mensaje de éxito)
          setSuccessMessage("¡Registro exitoso! Ahora puedes iniciar sesión.");
          console.log(result);
       } catch (err) {
