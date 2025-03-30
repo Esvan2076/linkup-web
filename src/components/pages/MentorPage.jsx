@@ -1,9 +1,15 @@
 import Header from "../templates/header";
 import Footer from '../templates/footer';
 import { useMentors } from "../../hooks/useMentors";
+import { useState } from "react";
 
 const MentorPage = () => {
    const { mentors, loading, error } = useMentors();
+   const [isChatOpen, setIsChatOpen] = useState(false);
+
+   const toggleChat = () => {
+      setIsChatOpen(!isChatOpen);
+   };
 
    return (
       <div className="flex flex-col min-h-screen">
@@ -67,12 +73,110 @@ const MentorPage = () => {
                                           Visitar sitio web
                                        </a>
                                     )}
-                                    <button className="btn btn-primary btn-sm">Contactar</button>
+                                    <button className="btn btn-primary btn-sm" onClick={toggleChat}>Contactar</button>
                                  </div>
                               </div>
+
+                              {isChatOpen && (
+                                 <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50">
+                                    <div className="w-full max-w-md bg-base-100 rounded-lg shadow-2xl overflow-hidden flex flex-col" style={{ height: '80vh' }}>
+                                       {/* Encabezado del chat */}
+                                       <div className="bg-primary text-primary-content p-4 flex justify-between items-center">
+                                          <div className="flex items-center space-x-3">
+                                             <div className="avatar">
+                                                <div className="w-10 rounded-full">
+                                                   <img src={mentor.imagen || `https://ui-avatars.com/api/?name=${mentor.nombre}`} alt={mentor.nombre} />
+                                                </div>
+                                             </div>
+                                             <div>
+                                                <h3 className="font-bold">{mentor.nombre}</h3>
+                                                <p className="text-xs opacity-80">{mentor.areaEspecializacion}</p>
+                                             </div>
+                                          </div>
+                                          <button
+                                             onClick={toggleChat}
+                                             className="btn btn-circle btn-ghost btn-sm"
+                                             aria-label="Cerrar chat"
+                                          >
+                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                             </svg>
+                                          </button>
+                                       </div>
+
+                                       {/* Área de mensajes */}
+                                       <div className="flex-1 p-4 overflow-y-auto bg-base-200">
+                                          <div className="space-y-3">
+                                             {/* Mensaje del mentor */}
+                                             <div className="chat chat-start">
+                                                <div className="chat-image avatar">
+                                                   <div className="w-10 rounded-full">
+                                                      <img src={mentor.imagen || `https://ui-avatars.com/api/?name=${mentor.nombre}`} alt={mentor.nombre} />
+                                                   </div>
+                                                </div>
+                                                <div className="chat-bubble bg-primary text-primary-content">
+                                                   Hola, ¿cómo puedo ayudarte a crecer tu negocio?
+                                                </div>
+                                                <div className="chat-footer opacity-50 text-xs mt-1">
+                                                   Enviado a las 10:30 AM
+                                                </div>
+                                             </div>
+
+                                             {/* Mensaje del usuario */}
+                                             <div className="chat chat-end">
+                                                <div className="chat-bubble bg-accent text-accent-content">
+                                                   Hola, estoy buscando mejorar mi estrategia de marketing.
+                                                </div>
+                                                <div className="chat-footer opacity-50 text-xs mt-1">
+                                                   Enviado a las 10:32 AM
+                                                </div>
+                                             </div>
+
+                                             {/* Mensaje del mentor */}
+                                             <div className="chat chat-start">
+                                                <div className="chat-image avatar">
+                                                   <div className="w-10 rounded-full">
+                                                      <img src={mentor.imagen || `https://ui-avatars.com/api/?name=${mentor.nombre}`} alt={mentor.nombre} />
+                                                   </div>
+                                                </div>
+                                                <div className="chat-bubble bg-primary text-primary-content">
+                                                   ¡Claro! Podemos empezar con un análisis de tu mercado y público objetivo.
+                                                </div>
+                                                <div className="chat-footer opacity-50 text-xs mt-1">
+                                                   Enviado a las 10:33 AM
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+
+                                       {/* Input de mensaje */}
+                                       <div className="p-3 bg-base-100 border-t border-base-300">
+                                          <div className="flex items-center space-x-2">
+                                             <button className="btn btn-circle btn-ghost btn-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                             </button>
+                                             <input
+                                                type="text"
+                                                placeholder="Escribe un mensaje..."
+                                                className="input input-bordered w-full focus:outline-none"
+                                             />
+                                             <button className="btn btn-circle btn-primary btn-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                                </svg>
+                                             </button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              )}
                            </div>
                         ))}
                      </div>
+
+
                   )}
                </section>
             )}
