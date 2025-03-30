@@ -1,18 +1,19 @@
 import Header from "../templates/header";
 import Footer from '../templates/footer';
 
-const MentorPage = () => {
+const DreamsPage = () => {
    return (
       <div>
          <Header />
          <div className="min-h-screen bg-gray-100">
             <div>
-               <h2 className="text-2xl font-bold text-center mb-4">Mentores</h2>
+               <h2 className="text-2xl font-bold text-center mb-4">Sueños</h2>
             </div>
          </div>
-         <Footer/>
+         <Footer />
       </div>
+
    );
 };
 
-export default MentorPage;
+export default DreamsPage;
