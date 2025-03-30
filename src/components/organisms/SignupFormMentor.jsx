@@ -17,6 +17,19 @@ const SignupForm = () => {
 
    const handleSubmit = async (e) => {
       e.preventDefault();
+
+      if (
+         !nombre ||
+         !areaEspecializacion ||
+         !tiempoRespuesta ||
+         !sitioWeb ||
+         !sobreMi ||
+         !edad
+      ) {
+         setError("Todos los campos son obligatorios.");
+         return;
+      }
+
       const principalId = Math.floor(1000000 + Math.random() * 9000000);
 
       // Crea el objeto con los datos del formulario
