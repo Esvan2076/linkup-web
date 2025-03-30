@@ -45,7 +45,7 @@ const Header = () => {
                      <a onClick={() => navigate("/login")}>Iniciar Sesion</a>
                   </li>
                   <li>
-                     <a onClick={() => navigate("/signup")}>Registrarse</a>
+                     <a onClick={() => navigate("/signupSelector")}>Registrarse</a>
                   </li>
                </ul>
             </div>

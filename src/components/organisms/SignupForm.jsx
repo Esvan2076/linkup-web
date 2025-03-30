@@ -25,7 +25,7 @@ const SignupForm = () => {
          edad,
          password
       };
-      console.log(newUser); // Este es solo un ejemplo, en producción deberías hacer una llamada a una API.
+      console.log(newUser);
    };
 
    return (
